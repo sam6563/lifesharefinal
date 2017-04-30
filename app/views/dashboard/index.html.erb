@@ -1,0 +1,25 @@
+<head>
+</head>
+
+<body>
+<h1><center><em><font face="Georgia"><font size="9">Life Share</em></font></font></center></h1><br/><br/>
+<center><em><font face="Georgia"><font size="6">Let's <strong><font color="red"><em>SHARE </em></font></strong>a little..Let's <strong><font color="red"><em>CARE</em></font></strong> a little..</font></font></em></center><br />
+<center><img src="/lifesharelogo.jpg" class="img-circle"></center>
+<% if user_signed_in? %>
+  <% if Donor.exists?(user_id: current_user.id) %>
+<center><font color="white"><font size="3"><font face="Georgia"><%= link_to "DONOR", new_donor_path, :class => "btn btn-primary btn-lg btn-block" %></font></font> </font></center><br/>
+<center><font size="3"><font face="Georgia"><%= link_to 'RECEIVE', new_receiver_path, :class => "btn btn-success btn-lg btn-block" %> </font></center>
+<% else %>
+<center><font color="white"><font size="3"><font face="Georgia"><%= link_to 'DONATE',new_donor_path, :class => "btn btn-primary btn-lg btn-block" %></font></font></font></center><br />
+<center><font size="3"><font face="Georgia"><%= link_to 'RECEIVE', new_receiver_path, :class => "btn btn-success btn-lg btn-block" %> </font></center>
+<%end%>
+<%else%>
+<center><font color="white"><font size="3"><font face="Georgia"><%= link_to 'DONATE',new_donor_path, :class => "btn btn-primary btn-lg btn-block" %></font></font></font></center><br />
+<center><font size="3"><font face="Georgia"><%= link_to 'RECEIVE', new_receiver_path, :class => "btn btn-success btn-lg btn-block" %> </font></center>
+
+
+
+<%end%>
+
+
+</body>

@@ -1,0 +1,54 @@
+<head>
+</head>
+
+<body >
+<p id="notice"><%= notice %></p>
+
+<center><img src="/donors.png" class="img-circle"></center>
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Blood group</th>
+      <th>Dob</th>
+      <th>State</th>
+      <th>City</th>
+      <th>Address</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Last blood donated</th>
+      <th>Contact number</th>
+      <th>E-mail</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @donors.each do |donor| %>
+      <tr>
+        <td><%= donor.name %></td>
+        <td><%= donor.blood_group %></td>
+        <td><%= donor.dob %></td>
+        <td><%= donor.state %></td>
+        <td><%= donor.city %></td>
+        <td><%= donor.address %></td>
+        <td><%= donor.latitude %></td>
+        <td><%= donor.longitude %></td>
+        <td><%= donor.last_blood_donated %></td>
+        <td><%= donor.contact_number %></td>
+        <td><%= donor.email_id %></td>
+        <td><%= link_to 'Show', donor %></td>
+        <td><%= link_to 'Edit', edit_donor_path(donor) %></td>
+        <td><%= link_to 'Destroy', donor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+</body>
+
+
+<br>
+
+<%= link_to 'New Donor', new_donor_path,:class => "btn btn-default"  %>
+<%= link_to 'Back', root_path,:class => "btn btn-default"  %>
+

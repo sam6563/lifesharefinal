@@ -1,0 +1,89 @@
+<head>
+</head>
+
+<body>
+  
+<p id="notice"><%= notice %></p>
+
+<p class ="list-group-item list-group-item-info">
+  <strong><font face="Georgia">Name:</font></strong>
+  <%= @donor.name %>
+</p>
+
+<p class ="list-group-item list-group-item-info">
+  <strong><font face="Georgia">Blood group:</font></strong>
+  <%= @donor.blood_group %>
+</p>
+
+<p class ="list-group-item list-group-item-info">
+  <strong><font face="Georgia">Dob:</font></strong>
+  <%= @donor.dob %>
+</p>
+
+<p class ="list-group-item list-group-item-info">
+  <strong><font face="Georgia">State:</font></strong>
+  <%= @donor.state %>
+</p>
+
+<p class ="list-group-item list-group-item-info">
+  <strong><font face="Georgia">City:</font></strong>
+  <%= @donor.city %>
+</p>
+
+<p class ="list-group-item list-group-item-info">
+  <strong><font face="Georgia">Address:</font></strong>
+  <%= @donor.address %>
+</p><br/><br/>
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@donor.latitude}%2C#{@donor.longitude}" %><br/><br/>
+
+<p class ="list-group-item list-group-item-info">
+  <strong><font face="Georgia">Latitude:</font></strong>
+  <%= @donor.latitude %>
+</p>
+
+<p class ="list-group-item list-group-item-info">
+  <strong><font face="Georgia">Longitude:</font></strong>
+  <%= @donor.longitude %>
+</p>
+
+<p class ="list-group-item list-group-item-info">
+  <strong><font face="Georgia">Last blood donated:</font></strong>
+  <%= @donor.last_blood_donated %>
+</p>
+<p class ="list-group-item list-group-item-info">
+  <strong><font face="Georgia">Contact number:</font></strong>
+  <%= @donor.contact_number %>
+</p>
+
+<p class ="list-group-item list-group-item-info">
+  <strong><font face="Georgia">E-mail:</font></strong>
+  <%= @donor.email_id %>
+</p>
+<p class ="list-group-item list-group-item-info">
+  <strong><font face="Georgia">User is: </font></strong>
+  <% if @donor.user.present? %>
+    <%= @donor.user.email %>
+  <% end %>
+</p>
+
+
+
+<h1><center><em><font face="Georgia">Receivers Nearby</font></em></center></h1>
+
+
+<% Receiver.near(@donor.address, 20).each do |rec|%>
+  <ul class = "list-group">
+   <li class ="list-group-item list-group-item-success">
+      <p><b>Name:</b> <%= rec.name %></p>
+      <p><b>Blood Group:</b><%= rec.blood_group %></p>
+      <p><b>Contact:</b><%= rec.contact_number %></p>
+      <p><b>Address:</b><%= rec.address %>  </p>
+    </li>
+  </ul>
+  
+
+<% end %>
+</body>
+
+
+<%= link_to 'Back', root_path,:class => "btn btn-default"  %>

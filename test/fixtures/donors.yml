@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  blood_group: MyString
+  dob: 
+  state: MyString
+  city: MyString
+  address: MyString
+  last_blood_donated: 2017-04-04
+  contact_number: MyString
+  e-mail_id: MyString
+
+two:
+  name: MyString
+  blood_group: MyString
+  dob: 
+  state: MyString
+  city: MyString
+  address: MyString
+  last_blood_donated: 2017-04-04
+  contact_number: MyString
+  e-mail_id: MyString

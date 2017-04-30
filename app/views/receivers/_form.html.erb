@@ -1,0 +1,58 @@
+<%= form_for(@receiver) do |f| %>
+  <% if @receiver.errors.any? %>
+    <div id="error_explanation">
+      <h2><font color="white">Oops!<%= pluralize(@receiver.errors.count, "error") %></font></h2>
+
+      <ul>
+      <font color="black">
+      <% @receiver.errors.full_messages.each do |message| %>
+        <li><font color="black"><%= message %></font></li>
+      <% end %>
+      </font>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <font color="black"><%= f.text_field :name %></font>
+  </div>
+  <div class="field">
+    <%= f.label :blood_group %><br>
+    <font color="black"><%= f.select :blood_group,Receiver::BLOOD_GROUP %></font>
+  </div>
+  <div class="field">
+    <%= f.label :Date_of_birth %><br>
+    <font color="black"><%= f.text_field :dob %></font>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <font color="black"><%= f.text_field :address %></font>
+  </div>
+  
+  <div class="field">
+    <%= f.label :contact_number %><br>
+    <font color="black"><%= f.text_field :contact_number %></font>
+  </div>
+  <div class="field">
+    <%= f.label :email_id %><br>
+    <font color="black"><%= f.text_field :email_id %></font>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <font color="black"><%= f.text_area :description %></font>
+  </div>
+  <div class="field">
+    
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit",:class => "btn btn-default" %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
+  });
+</script>

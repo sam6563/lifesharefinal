@@ -1,0 +1,5 @@
+I"U(function() {
+  $('[data-behaviour~=datepicker]').datepicker();
+
+}).call(this);
+:ET

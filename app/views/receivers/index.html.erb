@@ -1,0 +1,52 @@
+<head>
+</head>
+<body>
+
+<p id="notice"><%= notice %></p>
+
+<h1><center><em><font face="Georgia">Receivers</font></em></center></h1>
+<center><img src="/lifesharelogo.jpg" class="img-circle"></center>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Blood group</th>
+      <th>Dob</th>
+      <th>Address</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Contact number</th>
+      <th>Email</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @receivers.each do |receiver| %>
+      <% if current_user.receivers.include?(receiver) %>
+      <tr>
+        <td><%= receiver.name %></td>
+        <td><%= receiver.blood_group %></td>
+        <td><%= receiver.dob %></td>
+        <td><%= receiver.address %></td>
+        <td><%= receiver.latitude %></td>
+        <td><%= receiver.longitude %></td>
+        <td><%= receiver.contact_number %></td>
+        <td><%= receiver.email_id %></td>
+        <td><%= receiver.description %></td>
+
+        <td><%= link_to 'Show', receiver %></td>
+        <td><%= link_to 'Edit', edit_receiver_path(receiver) %></td>
+        <td><%= link_to 'Destroy', receiver, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+</body>
+
+<br>
+
+

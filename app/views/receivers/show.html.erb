@@ -1,0 +1,84 @@
+<p id="notice"><%= notice %></p>
+<!--
+<p>
+  <strong>Name:</strong>
+  <%= @receiver.name %>
+</p>
+
+ <p>
+  <strong>Blood group:</strong>
+  <%= @receiver.blood_group %>
+</p>
+
+<p>
+  <strong>Dob:</strong>
+  <%= @receiver.dob %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @receiver.address %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @receiver.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @receiver.longitude %>
+</p>
+
+<p>
+  <strong>Contact number:</strong>
+  <%= @receiver.contact_number %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @receiver.email_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @receiver.description %>
+</p>
+
+<p>
+  <strong>User</strong>
+  <% if @receiver.user.present? %>
+    <%= @receiver.user.email %>
+  <% end %>
+</p> -->
+<!-- 
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@receiver.latitude}%2C#{@receiver.longitude} &key=AIzaSyDV7FCPoq9muuPYHDfeJeBsZq5JaEfsosk" %>
+-->
+
+
+<center><h1><em><font face="Georgia">Donors Nearby</font></em></h1></center>
+
+
+<% my_url = "http://maps.google.com/maps/api/staticmap?size=800x800&sensor=false&zoom=9 &key=AIzaSyDV7FCPoq9muuPYHDfeJeBsZq5JaEfsosk" %>
+
+
+<% Donor.near(@receiver.address, 20, :units => :km).each do |don|%>
+  <ul class = "list-group">
+    <li class ="list-group-item list-group-item-success">
+      <% my_url += "&markers=#{don.latitude}%2C#{don.longitude}" %>    
+      <p><b>Name:</b> <%= don.name %></p>
+      <p><b>Blood Group:</b><%= don.blood_group %></p>
+      <p><b>Contact:</b><%= don.contact_number %></p>
+      <p><b>Address:</b><%= don.address %> (<%= don.distance.round(2)%> kms )</p>
+    </li>
+  </ul>
+<% end %>
+
+<%= image_tag my_url %>
+
+
+<br>
+
+
+
+<%= link_to 'Back', root_path,:class => "btn btn-default" %>
